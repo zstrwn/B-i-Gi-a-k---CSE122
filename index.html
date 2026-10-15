@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý người dùng - VolunteerLink</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__left">
+      <span class="logo">♥</span>
+      <strong>VolunteerLink</strong>
+      <span class="badge badge--role">🛡️ Quản trị viên</span>
+    </div>
+    <div class="header__right">
+      <strong class="header__title">Quản trị hệ thống</strong>
+      <button class="icon-btn" type="button" aria-label="Thông báo">🔔<span class="dot">1</span></button>
+      <button class="btn" type="button">Đăng xuất</button>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <nav class="sidebar" aria-label="Menu quản trị">
+      <ul>
+        <li><a href="#">🛡️ Kiểm duyệt</a></li>
+        <li><a href="#">🗂️ Danh mục</a></li>
+        <li><a href="#" class="active">👤 Người dùng</a></li>
+        <li><a href="#">📜 Nhật ký hệ thống</a></li>
+        <li><a href="#">🔔 Thông báo</a></li>
+        <li><a href="#">⚙️ Cài đặt</a></li>
+      </ul>
+    </nav>
+
+    <main class="main">
+
+      <section class="page-head">
+        <div>
+          <h1>Quản lý người dùng</h1>
+          <p>Tạo, sửa, phê duyệt, khóa tài khoản.</p>
+        </div>
+        <button class="btn btn--primary" id="btnCreate" type="button">+ Tạo người dùng</button>
+      </section>
+
+      <section class="card filters">
+        <div class="field field--grow">
+          <label for="searchInput">Tìm người dùng</label>
+          <input type="text" id="searchInput" placeholder="Tên hoặc email">
+        </div>
+        <div class="field">
+          <label for="roleFilter">Vai trò</label>
+          <select id="roleFilter">
+            <option value="">Mọi vai trò</option>
+            <option value="Tình nguyện viên">Tình nguyện viên</option>
+            <option value="Tổ chức xã hội">Tổ chức xã hội</option>
+            <option value="Điều phối viên">Điều phối viên</option>
+            <option value="Quản trị viên">Quản trị viên</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="statusFilter">Trạng thái</label>
+          <select id="statusFilter">
+            <option value="">Mọi trạng thái</option>
+            <option value="active">Hoạt động</option>
+            <option value="locked">Bị khóa</option>
+            <option value="pending">Chờ duyệt</option>
+          </select>
+        </div>
+      </section>
+
+     >
+      <section class="card table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Người dùng</th>
+              <th>Vai trò</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <!-- JavaScript sẽ vẽ các hàng vào đây -->
+          <tbody id="userTable"></tbody>
+        </table>
+        <p class="empty" id="emptyMsg" hidden>Không tìm thấy người dùng phù hợp.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== MODAL TẠO / SỬA ===== -->
+  <div class="modal" id="userModal" hidden>
+    <div class="modal__box">
+      <h2 id="modalTitle">Tạo người dùng</h2>
+      <form id="userForm" novalidate>
+        <label for="nameInput">Họ tên / Tên tổ chức</label>
+        <input type="text" id="nameInput">
+        <p class="error" id="nameError"></p>
+
+        <label for="emailInput">Email</label>
+        <input type="email" id="emailInput">
+        <p class="error" id="emailError"></p>
+
+        <label for="roleInput">Vai trò</label>
+        <select id="roleInput">
+          <option>Tình nguyện viên</option>
+          <option>Tổ chức xã hội</option>
+          <option>Điều phối viên</option>
+        </select>
+
+        <div class="modal__actions">
+          <button type="button" class="btn" id="btnCancel">Hủy</button>
+          <button type="submit" class="btn btn--primary">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
